@@ -1,0 +1,30 @@
+#include "pch.h"
+#include <iostream>
+#include<string>
+using namespace std;
+
+void metodo1(int x, string z)
+{
+	float estaEsVarFloat = 9.5;
+	x++;
+	cout << "Dame nombre: ";
+	cin >> z;
+	cout << z << endl;
+}
+int main()
+{
+	int a = 1, b = 2, c = 3;
+	string miNombre, tuNombre, elNombre = "Monica";
+	for (int i = 4; i < 10; i++)
+	{
+		int llamada = 4;
+		cout << "Saludando " << elNombre;
+		llamada++;
+	}
+	metodo1(3, "");
+       bool estaBien = true;
+	if (estaBien)
+		cout << "Todo bien, terminamos " << elNombre << endl;
+	system("pause");
+	return EXIT_SUCCESS;
+}
