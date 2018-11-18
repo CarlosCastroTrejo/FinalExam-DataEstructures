@@ -99,7 +99,7 @@ ostream &operator<< (ostream &o, ListaSimpleCircular* lista)
 		NodoLigado *temp = lista->head;
 		while (temp != NULL)
 		{
-			o << " ---->";
+			o << " ----> ";
 			o << temp;
 			temp = temp->getSig();
 		}

@@ -32,7 +32,7 @@ void Valores(string oracion, HashTable* hash,string tipo)
 	{
 		nombre = myQueue.front();
 		myQueue.pop();
-		if (!myQueue.empty()) 
+		if (!myQueue.empty() && (myQueue.front()[0]>=48 && myQueue.front()[0] <= 57) )
 		{
 			valor = myQueue.front();
 			myQueue.pop();
@@ -117,16 +117,22 @@ void LeerDocumento(string nombreTexto,HashTable* myHash)
 					}
 				}
 				oracion += ' ';
+				while(oracion.find("(") != string::npos)
+				{
+
+					oracion.replace(oracion.find("("), 1, " ");
+				}
+				while (oracion.find(")") != string::npos)
+				{
+
+					oracion.replace(oracion.find(")"), 1, " ");
+				}
 				while (oracion.length()>0)
 				{
-					if (oracion.find("("))
-					{
-						oracion.replace(oracion.find("("), 1, " ");
-
-					}
 					palabra = oracion.substr(0, oracion.find(' '));
 					if (palabra == "int")
 					{
+						cout << oracion << endl;
 						oracion.erase(0, oracion.find(' ') + 1);
 						if (oracion[oracion.length()-2] == ';') 
 						{

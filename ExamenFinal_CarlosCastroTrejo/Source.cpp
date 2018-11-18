@@ -10,7 +10,7 @@ using namespace std;
 
 int main() 
 {
-	HashTable hash(NumeroVariables("texto.txt"));
+	HashTable hash(/*NumeroVariables("texto.txt")*/10);
 	string oracion,palabra;
 
 	LeerDocumento("texto.txt",&hash);
