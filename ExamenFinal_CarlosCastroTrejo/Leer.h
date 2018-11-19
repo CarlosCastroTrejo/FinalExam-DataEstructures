@@ -32,10 +32,38 @@ void Valores(string oracion, HashTable* hash,string tipo)
 	{
 		nombre = myQueue.front();
 		myQueue.pop();
-		if (!myQueue.empty() || (myQueue.front()[0]>=48 && myQueue.front()[0]<=57) || myQueue.front()[0] == 34)
+		if (!myQueue.empty()  )
 		{
-			valor = myQueue.front();
-			myQueue.pop();
+			if ( tipo == "bool" ) 
+			{
+				valor = myQueue.front();
+				myQueue.pop();
+			
+			}
+			else if (tipo == "string") 
+			{
+				if (myQueue.front()[0] == 34) 
+				{
+					valor = myQueue.front();
+					myQueue.pop();
+				}
+			}
+			else if (tipo == "char") 
+			{
+				if (myQueue.front()[0] == 39)
+				{
+					valor = myQueue.front();
+					myQueue.pop();
+				}
+			}
+			else 
+			{
+				if (myQueue.front()[0] >= 48 && myQueue.front()[0] <= 57) 
+				{
+					valor = myQueue.front();
+					myQueue.pop();
+				}
+			}
 		}
 		else 
 		{

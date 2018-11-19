@@ -2,6 +2,7 @@
 
 
 
+
 ListaSimpleCircular::ListaSimpleCircular()
 {
 	this->head = NULL;
@@ -57,15 +58,14 @@ void ListaSimpleCircular::Modificar(string nombre,string tipo,string valor)
 	NodoLigado *auxiliarUltimo = head;
 
 	
-		while (auxiliarUltimo != NULL && auxiliar->getNombreVariable() != auxiliarUltimo->getNombreVariable())
-		{
-			auxiliarUltimo = auxiliarUltimo->getSig();
-
-		}
+	while (auxiliarUltimo != NULL && auxiliar->getNombreVariable() != auxiliarUltimo->getNombreVariable())
+	{
 		auxiliarUltimo = auxiliarUltimo->getSig();
-		auxiliarUltimo->setNombreVariable(nombre);
-		auxiliarUltimo->setNombreVariable(tipo);
-		auxiliarUltimo->setNombreVariable(valor);
+
+	}
+	auxiliarUltimo->setNombreVariable(nombre);
+	auxiliarUltimo->setTipoVariable(tipo);
+	auxiliarUltimo->setValorVariable(valor);
 }
 
 void ListaSimpleCircular::BorrarDato(string nombre)

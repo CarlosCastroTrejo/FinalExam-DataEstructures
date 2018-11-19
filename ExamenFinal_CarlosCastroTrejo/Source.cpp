@@ -1,4 +1,9 @@
+// Carlos Emiliano Castro Trejo  -  A01422062
+// Examen final Estructuras de Datos  -  19/11/2018
+// Proyecto encargado de simular una tabla de simbolos al momento de compilar el codigo. 
+// Poyecto implementado usando Hash Tables.
 #include"HashTable.h"
+#include"Header.h"
 #include"Leer.h"
 #include<vector>
 #include<string>
@@ -17,7 +22,7 @@ int main()
 
 	while (oracion != "F")
 	{
-		cout << "Que deseas hacer" << endl;
+		cout << "Que deseas hacer?" << endl;
 		getline(cin, oracion);
 		if (oracion[0] == '@')
 		{

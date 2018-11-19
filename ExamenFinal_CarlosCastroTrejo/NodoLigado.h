@@ -1,10 +1,11 @@
 #pragma once
-
 #include<string>
 #include <iomanip>
 #include <fstream>
+#include<vector>
 #include<iostream>
 using namespace std;
+
 
 class NodoLigado
 {

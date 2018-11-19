@@ -8,10 +8,9 @@
 #include<iostream>
 
 using namespace std;
-
 class HashTable
 {
-	vector < NodoExterior<string>*> myVector;
+	vector < NodoExterior<string>*> myVector; 
 
 public:
 	HashTable(int);
