@@ -1,7 +1,7 @@
 // Carlos Emiliano Castro Trejo  -  A01422062
 // Examen final Estructuras de Datos  -  19/11/2018
 // Proyecto encargado de simular una tabla de simbolos al momento de compilar el codigo. 
-// Poyecto implementado usando Hash Tables.
+// Proyecto implementado usando Hash Tables.
 #include"HashTable.h"
 #include"Header.h"
 #include"Leer.h"

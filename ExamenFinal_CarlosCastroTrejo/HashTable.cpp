@@ -158,6 +158,10 @@ void HashTable::Deplegar()
 		{
 			cout << x << " " << myVector[x]->getNombreVariable() << " - " << myVector[x]->getTipoVariable() << " - " << BoolVector[stoi(myVector[x]->getValorVariable())] << "  ||| " << myVector[x]->getLista() << endl;
 		}
+		else 
+		{
+			cout << x << endl;
+		}
 	}
 
 }
