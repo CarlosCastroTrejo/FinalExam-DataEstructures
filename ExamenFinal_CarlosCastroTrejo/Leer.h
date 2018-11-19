@@ -32,20 +32,40 @@ void Valores(string oracion, HashTable* hash,string tipo)
 	{
 		nombre = myQueue.front();
 		myQueue.pop();
-		if (!myQueue.empty() && (myQueue.front()[0]>=48 && myQueue.front()[0] <= 57) )
+		if (!myQueue.empty() || (myQueue.front()[0]>=48 && myQueue.front()[0]<=57) || myQueue.front()[0] == 34)
 		{
 			valor = myQueue.front();
 			myQueue.pop();
 		}
 		else 
 		{
-			valor = " ";
+			if (tipo == "int") 
+			{
+				valor = "0";
+			}
+			else if (tipo == "string")
+			{
+				valor = " " " ";
+			}
+			else if (tipo == "float") 
+			{
+				valor = "0";
+			}
+			else if (tipo == "double")
+			{
+				valor = "0";
+			}
+			else if (tipo == "char")
+			{
+				valor = "' '";
+			}
+			else if (tipo == "bool")
+			{
+				valor = "true";
+			}
 		}
-		
 		hash->Insertar(nombre, tipo, valor);
 	}
-
-	
 }
 
 int Val(string oracion)
@@ -59,10 +79,6 @@ int Val(string oracion)
 		oracion.erase(0, oracion.find(" ") + 1);
 		if (x != "=")
 		{
-			if (x[x.length() - 1] == ',')
-			{
-				x.erase(x.length() - 1, 1);
-			}
 			myQueue.push(x);
 		}
 	}
@@ -73,20 +89,20 @@ int Val(string oracion)
 	{
 		nombre = myQueue.front();
 		myQueue.pop();
-		if (!myQueue.empty())
+		if (!myQueue.empty() || (myQueue.front()[0] >= 48 && myQueue.front()[0] <= 57) || myQueue.front()[0] == 34)
 		{
 			valor = myQueue.front();
 			myQueue.pop();
 		}
 		else
 		{
-			valor = " ";
+
 		}
-
 		number++;
-	}
 
+	}
 	return number;
+
 }
 
 void LeerDocumento(string nombreTexto,HashTable* myHash) 
@@ -132,11 +148,11 @@ void LeerDocumento(string nombreTexto,HashTable* myHash)
 					palabra = oracion.substr(0, oracion.find(' '));
 					if (palabra == "int")
 					{
-						cout << oracion << endl;
 						oracion.erase(0, oracion.find(' ') + 1);
-						if (oracion[oracion.length()-2] == ';') 
+						if (oracion.find(";") != string::npos)
 						{
-							oracion.erase(oracion.length() - 2, 1);
+							oracion = oracion.substr(0, oracion.find(';'));
+							oracion += " ";
 							Valores(oracion, myHash, "int");
 						}
 					}
@@ -179,9 +195,10 @@ void LeerDocumento(string nombreTexto,HashTable* myHash)
 					else if (palabra == "bool")
 					{
 						oracion.erase(0, oracion.find(' ') + 1);
-						if (oracion[oracion.length() - 2] == ';')
+						if (oracion.find(";") != string::npos)
 						{
-							oracion.erase(oracion.length() - 2, 1);
+							oracion = oracion.substr(0, oracion.find(';'));
+							oracion += " ";
 							Valores(oracion, myHash, "bool");
 						}
 					}
@@ -228,15 +245,27 @@ int NumeroVariables(string nombreTexto)
 					}
 				}
 				oracion += ' ';
+				while (oracion.find("(") != string::npos)
+				{
+
+					oracion.replace(oracion.find("("), 1, " ");
+				}
+				while (oracion.find(")") != string::npos)
+				{
+
+					oracion.replace(oracion.find(")"), 1, " ");
+				}
 				while (oracion.length()>0)
 				{
 					palabra = oracion.substr(0, oracion.find(' '));
 					if (palabra == "int")
 					{
 						oracion.erase(0, oracion.find(' ') + 1);
-						if (oracion[oracion.length() - 2] == ';')
+						if (oracion.find(";") != string::npos)
 						{
-							oracion.erase(oracion.length() - 2, 1);
+
+							oracion = oracion.substr(0, oracion.find(';'));
+							oracion += " ";
 							number+=Val(oracion);
 						}
 					}
@@ -246,7 +275,7 @@ int NumeroVariables(string nombreTexto)
 						if (oracion[oracion.length() - 2] == ';')
 						{
 							oracion.erase(oracion.length() - 2, 1);
-							number += Val(oracion);
+							number+=Val(oracion);
 						}
 					}
 					else if (palabra == "float")
@@ -255,7 +284,7 @@ int NumeroVariables(string nombreTexto)
 						if (oracion[oracion.length() - 2] == ';')
 						{
 							oracion.erase(oracion.length() - 2, 1);
-							number += Val(oracion);
+							number+=Val(oracion);
 						}
 					}
 					else if (palabra == "double")
@@ -264,7 +293,7 @@ int NumeroVariables(string nombreTexto)
 						if (oracion[oracion.length() - 2] == ';')
 						{
 							oracion.erase(oracion.length() - 2, 1);
-							number += Val(oracion);
+							number+=Val(oracion);
 						}
 					}
 					else if (palabra == "char")
@@ -273,7 +302,7 @@ int NumeroVariables(string nombreTexto)
 						if (oracion[oracion.length() - 2] == ';')
 						{
 							oracion.erase(oracion.length() - 2, 1);
-							number += Val(oracion);
+							number+=Val(oracion);
 						}
 					}
 					else if (palabra == "bool")
@@ -282,7 +311,7 @@ int NumeroVariables(string nombreTexto)
 						if (oracion[oracion.length() - 2] == ';')
 						{
 							oracion.erase(oracion.length() - 2, 1);
-							number += Val(oracion);
+							number+=Val(oracion);
 						}
 					}
 					else

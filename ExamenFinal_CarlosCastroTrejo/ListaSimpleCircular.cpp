@@ -28,73 +28,109 @@ void ListaSimpleCircular::InsertarFin(string nombreVariable, string tipoVariable
 	}
 }
 
-void ListaSimpleCircular::BorrarDato(string nombreVariable)
+bool ListaSimpleCircular::Buscar(string nombre) 
 {
-
-	/*if (!head) {
-		cout << "Lista vacia" << endl;
+	if (!head) 
+	{
+		return false;
 	}
-	else {
+	else 
+	{
 		NodoLigado *temp = head;
-		while (temp->Get_id() != dato && temp->Get_sig() != NULL) {
-			temp = temp->Get_sig();
+		while (temp != NULL)
+		{
+			if (temp->getNombreVariable() == nombre) 
+			{
+				return true;
+			}
+
+			temp = temp->getSig();
 		}
-		if (temp->Get_sig() == NULL) {
-			if (temp->Get_id() == dato) {
+		return false;
+	}
+}
+
+void ListaSimpleCircular::Modificar(string nombre,string tipo,string valor)
+{
+	
+	NodoLigado *auxiliar = new NodoLigado(nombre, tipo,valor);
+	NodoLigado *auxiliarUltimo = head;
+
+	
+		while (auxiliarUltimo != NULL && auxiliar->getNombreVariable() != auxiliarUltimo->getNombreVariable())
+		{
+			auxiliarUltimo = auxiliarUltimo->getSig();
+
+		}
+		auxiliarUltimo = auxiliarUltimo->getSig();
+		auxiliarUltimo->setNombreVariable(nombre);
+		auxiliarUltimo->setNombreVariable(tipo);
+		auxiliarUltimo->setNombreVariable(valor);
+}
+
+void ListaSimpleCircular::BorrarDato(string nombre)
+{
+	
+		NodoLigado *temp = head;
+		while (temp->getNombreVariable() != nombre && temp != NULL) {
+			temp = temp->getSig();
+		}
+		if (temp->getSig() == NULL) 
+		{
+			if (temp->getNombreVariable() == nombre) 
+			{
 				NodoLigado *borrar = head;
 				if (temp == borrar) {
 					head = NULL;
 					delete borrar;
 				}
 				else {
-					while (borrar->Get_sig() != temp) {
-						borrar = borrar->Get_sig();
+					while (borrar->getSig() != temp) {
+						borrar = borrar->getSig();
 					}
-					borrar->Set_sig(NULL);
+					borrar->setSig(NULL);
 					delete temp;
 				}
-			}
-			else {
-				cout << "No se encuentra el dato solicitado" << endl;
 			}
 		}
 		else {
 			NodoLigado *borrar = head;
 			if (borrar == temp) {
-				head = head->Get_sig();
+				head = head->getSig();
 				delete borrar;
 			}
 			else {
-				while (borrar->Get_sig() != temp) {
-					borrar = borrar->Get_sig();
+				while (borrar->getSig() != temp) {
+					borrar = borrar->getSig();
 				}
-				borrar->Set_sig(temp->Get_sig());
+				borrar->setSig(temp->getSig());
 				delete temp;
 			}
 		}
-	}*/
 }
-NodoLigado* ListaSimpleCircular::getHead() 
+
+
+NodoLigado* ListaSimpleCircular::getHead()
 {
 	return this->head;
 }
 
-void ListaSimpleCircular::setHead(NodoLigado *head) 
+void ListaSimpleCircular::setHead(NodoLigado *head)
 {
 	this->head = head;
 }
 
-ostream &operator<< (ostream &o, ListaSimpleCircular* lista) 
+ostream &operator<< (ostream &o, ListaSimpleCircular* lista)
 {
-	if (lista == NULL) 
+	if (lista == NULL)
 	{
-	
+
 	}
-	else if (lista->head == NULL) 
+	else if (lista->head == NULL)
 	{
-		
+
 	}
-	else 
+	else
 	{
 		NodoLigado *temp = lista->head;
 		while (temp != NULL)
@@ -103,10 +139,11 @@ ostream &operator<< (ostream &o, ListaSimpleCircular* lista)
 			o << temp;
 			temp = temp->getSig();
 		}
-		
+
 	}
 	return o;
 }
+
 ListaSimpleCircular::~ListaSimpleCircular()
 {
 }

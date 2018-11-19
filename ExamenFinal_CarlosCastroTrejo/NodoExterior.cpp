@@ -1,6 +1,7 @@
 #include "NodoExterior.h"
 
-NodoExterior::NodoExterior(string nombreVariable, string tipoVariable, string valorVariable)
+template<class T>
+NodoExterior<T>::NodoExterior(string nombreVariable, string tipoVariable, T valorVariable)
 {
 	this->NombreVariable = nombreVariable;
 	this->TipoVariable = tipoVariable;
@@ -8,7 +9,8 @@ NodoExterior::NodoExterior(string nombreVariable, string tipoVariable, string va
 	this->lista = new ListaSimpleCircular();
 }
 
-NodoExterior::NodoExterior()
+template<class T>
+NodoExterior<T>::NodoExterior()
 {
 	this->NombreVariable = "";
 	this->TipoVariable = "";
@@ -16,26 +18,31 @@ NodoExterior::NodoExterior()
 	this->lista = NULL;
 }
 
-ListaSimpleCircular *NodoExterior::getLista()
+template<class T>
+ListaSimpleCircular *NodoExterior<T>::getLista()
 {
 	return this->lista ;
 }
 
-string NodoExterior::getNombreVariable()
+template<class T>
+string NodoExterior<T>::getNombreVariable()
 {
 	return this->NombreVariable;
 }
 
-string NodoExterior::getTipoVariable()
+template<class T>
+string NodoExterior<T>::getTipoVariable()
 {
 	return this->TipoVariable;
 }
 
-string NodoExterior::getValorVariable()
+template<class T>
+T NodoExterior<T>::getValorVariable()
 {
 	return this->valorVariable;
 }
 
-NodoExterior::~NodoExterior()
+template<class T>
+NodoExterior<T>::~NodoExterior()
 {
 }

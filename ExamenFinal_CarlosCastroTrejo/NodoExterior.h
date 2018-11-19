@@ -5,22 +5,23 @@
 
 using namespace std;
 
+template<class T>
 class NodoExterior
 {
 	string NombreVariable;
 	string TipoVariable;
-	string valorVariable;
+	T valorVariable;
 	ListaSimpleCircular *lista;
 public:
 	NodoExterior();
 
-	NodoExterior(string, string, string);
+	NodoExterior(string, string, T);
 
 	string getNombreVariable();
 
 	string getTipoVariable();
 
-	string getValorVariable();
+	T getValorVariable();
 
 	ListaSimpleCircular* getLista();
 

@@ -1,5 +1,6 @@
 #pragma once
 #include "NodoExterior.h"
+#include"NodoExterior.cpp"
 #include<vector>
 #include<string>
 #include <iomanip>
@@ -10,16 +11,17 @@ using namespace std;
 
 class HashTable
 {
-
-	vector < NodoExterior*> myVector;
+	vector < NodoExterior<string>*> myVector;
 
 public:
 	HashTable(int);
 
 	void Insertar(string, string,string);
 	void Deplegar();
-
-	vector < NodoExterior*> getMyVector();
+	void DeplegarEspecifico(string);
+	void CambiarValor(string,string,string);
+	bool Buscar(string );
+	void Borrar(string);
 	~HashTable();
 };
 

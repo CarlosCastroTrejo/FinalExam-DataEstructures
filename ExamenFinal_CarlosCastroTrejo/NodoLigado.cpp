@@ -37,6 +37,22 @@ string NodoLigado::getValorVariable()
 	return this->valorVariable;
 }
 
+
+void NodoLigado::setNombreVariable(string nombre)
+{
+	this->NombreVariable = nombre;
+}
+
+void NodoLigado::setTipoVariable(string tipo)
+{
+	this->TipoVariable = tipo;
+}
+
+void NodoLigado::setValorVariable(string valor)
+{
+	this->valorVariable = valor;
+}
+
 ostream &operator<< (ostream &o, NodoLigado* Nodo) {
 
 	o << Nodo->getNombreVariable() << " " << Nodo->getTipoVariable() << " " << Nodo->getValorVariable();

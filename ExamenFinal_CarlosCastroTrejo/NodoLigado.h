@@ -26,6 +26,12 @@ public:
 
 	string getValorVariable();
 
+	void setNombreVariable(string);
+
+	void setTipoVariable(string);
+
+	void setValorVariable(string);
+
 	friend ostream &operator<< (ostream&, NodoLigado*);
 
 	~NodoLigado();
